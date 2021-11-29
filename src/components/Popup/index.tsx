@@ -2,7 +2,6 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { css, keyframes } from "@emotion/react";
 import { useResponsiveSize } from "../../utils/useResponsiveSize";
-import { Cross2Icon } from "@radix-ui/react-icons";
 import { mq } from "../../styles/globals";
 import { BottomImage } from "../BottomImage";
 import { useEthers } from "@usedapp/core";
@@ -10,6 +9,10 @@ import { useShortAddressWithEns } from "../../utils/useShortAddressWithEns";
 import { useWindowSize } from "../../utils/useWindowSize";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import React, { useContext, useEffect, useState } from "react";
+import { CloseBtn } from "./CloseBtn";
+import { VerticalGap } from "../VerticalGap";
+import { HorizontalGap } from "../HorizontalGap";
+import { Button } from "../Button";
 
 const TypeContext = React.createContext<{
   type: string;
@@ -140,7 +143,136 @@ const WalletPopupContent = ({ isCopied, onCopy, type }) => {
 };
 
 const StakeContent = () => {
-  return <span>StakeContent</span>;
+  const [amount, setAmount] = useState("0.00");
+  return (
+    <div
+      css={css`
+        flex: 1;
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 60px;
+        padding-bottom: 57px;
+      `}
+    >
+      <CloseBtn />
+      <DialogPrimitive.DialogTitle
+        css={css`
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 30px;
+
+          color: white;
+        `}
+      >
+        Stake your tokens
+      </DialogPrimitive.DialogTitle>
+      <VerticalGap val={18} />
+      <div
+        css={css`
+          position: relative;
+        `}
+      >
+        <input
+          css={css`
+            border: 1px solid #ffffff;
+            box-sizing: border-box;
+            border-radius: 8px;
+            width: 484px;
+            height: 73px;
+            background-color: black;
+            padding-left: 20px;
+            color: white;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
+            padding-right: 195px;
+          `}
+          type="text"
+          inputMode="decimal"
+          pattern="^[0-9]*[.,]?[0-9]*$"
+          value={amount}
+          onChange={(e) => {
+            const currentText = e.target.value;
+            console.log("currentText", currentText);
+            if (/^[0-9]*[.]?[0-9]*$/.test(currentText) || currentText === "")
+              setAmount(currentText);
+            // setAmount(e.target.value);
+          }}
+        />
+        <div
+          css={css`
+            position: absolute;
+            right: 0;
+            width: 195px;
+            height: 73px;
+            /* background-color: gray; */
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+          `}
+        >
+          <span
+            css={css`
+              font-family: Poppins;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 16px;
+              line-height: 24px;
+            `}
+          >
+            DRAGON/ETH
+          </span>
+          <HorizontalGap val={12} />
+          <Button
+            btnStyleCss={css`
+              width: 55px;
+              height: 33px;
+              background: #2d2d2d;
+              border-radius: 27px;
+              padding-top: 3px;
+              color: #e57d44;
+            `}
+          >
+            Max
+          </Button>
+        </div>
+        <VerticalGap val={12} />
+        <span
+          css={css`
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 21px;
+          `}
+        >
+          Balance: {0}
+        </span>
+        <VerticalGap val={19} />
+        <Button
+          btnStyleCss={css`
+            transition: transform 0.5s;
+            min-width: ${484}px;
+            height: ${44}px;
+            background: #2d2d2d;
+            border-radius: 36px;
+            color: #e57d44;
+          `}
+        >
+          Stake
+        </Button>
+      </div>
+    </div>
+  );
 };
 
 const WalletContent = ({ isCopied, onCopy }) => {
@@ -165,30 +297,7 @@ const WalletContent = ({ isCopied, onCopy }) => {
         padding-bottom: 34px;
       `}
     >
-      <WalletPopupClose asChild>
-        <button
-          css={css`
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 25px;
-            height: 25px;
-            border-radius: 100%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            &:hover {
-              background-color: rgba(226, 118, 37, 0.5);
-            }
-            &:focus {
-              /* box-shadow: 0 0 0 2px #e27625; */
-            }
-          `}
-          aria-label="Close"
-        >
-          <Cross2Icon color={"white"} />
-        </button>
-      </WalletPopupClose>
+      <CloseBtn />
 
       <DialogPrimitive.DialogTitle
         css={css`
@@ -338,6 +447,7 @@ const WalletPopupTrigger = ({ children }) => {
   const { setType, type } = useContext(TypeContext);
   return (
     <DialogPrimitive.Trigger
+      asChild
       onClick={() => {
         setType("wallet");
       }}
@@ -351,6 +461,7 @@ const StakePopupTrigger = ({ children }) => {
   const { setType, type } = useContext(TypeContext);
   return (
     <DialogPrimitive.Trigger
+      asChild
       onClick={() => {
         setType("stake");
       }}

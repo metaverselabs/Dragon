@@ -116,7 +116,7 @@ const StyledButtonWithBalance = ({
       >
         {Number(formatEther(balance ?? 0)).toLocaleString() ?? 0} DRAGON
       </span>
-      <WalletPopupTrigger asChild>
+      <WalletPopupTrigger>
         <div>
           <Button
             onClick={onClick}

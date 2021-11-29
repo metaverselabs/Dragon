@@ -4,8 +4,10 @@ import { Button } from "../Button";
 import { HorizontalGap } from "../HorizontalGap";
 import { StakePopupTrigger } from "../Popup";
 import { LpInfo } from "./LpInfo";
+import { LPV2_ADDR } from "../../../constants";
 
 export const StakePanel = () => {
+  const LPTokenBalance = useTokenBalance(LPV2_ADDR, account);
   const { resH, resW } = useResponsiveSize();
   return (
     <div
@@ -60,20 +62,20 @@ export const StakePanel = () => {
           Unstake
         </Button>
         <HorizontalGap val={resW(24)} />
-        <StakePopupTrigger>
-          <Button
-            btnStyleCss={css`
-              transition: transform 0.5s;
-              min-width: ${resW(290)}px;
-              height: ${resH(44)}px;
-              background: #2d2d2d;
-              border-radius: 36px;
-              color: #e57d44;
-            `}
-          >
-            Approve Staking
-          </Button>
-        </StakePopupTrigger>
+        {/* <StakePopupTrigger> */}
+        <Button
+          btnStyleCss={css`
+            transition: transform 0.5s;
+            min-width: ${resW(290)}px;
+            height: ${resH(44)}px;
+            background: #2d2d2d;
+            border-radius: 36px;
+            color: #e57d44;
+          `}
+        >
+          Approve Staking
+        </Button>
+        {/* </StakePopupTrigger> */}
       </div>
     </div>
   );
