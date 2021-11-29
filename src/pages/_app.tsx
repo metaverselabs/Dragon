@@ -1,7 +1,7 @@
 import { GlobalStyle } from "../styles/globals";
 import { ChainId, Config, DAppProvider } from "@usedapp/core";
 import { useDappConfig } from "../../constants";
-import { WalletPopup } from "../components/WalletPopup";
+import { Popup } from "../components/Popup";
 import { FireBaseProvider } from "../utils/useFirebaseContainer";
 // disable ssr for next.js
 // https://dev.to/apkoponen/how-to-disable-server-side-rendering-ssr-in-next-js-1563
@@ -19,10 +19,10 @@ function MyApp({ Component, pageProps }) {
     <SafeHydrate>
       <FireBaseProvider>
         <DAppProvider config={useDappConfig}>
-          <WalletPopup>
+          <Popup>
             <GlobalStyle />
             <Component {...pageProps} />
-          </WalletPopup>
+          </Popup>
         </DAppProvider>
       </FireBaseProvider>
     </SafeHydrate>

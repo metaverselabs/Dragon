@@ -16,7 +16,7 @@ import { mq } from "../styles/globals";
 import { TOKEN_ADDR } from "../../constants";
 import { BigNumber } from "@ethersproject/bignumber";
 import { formatEther } from "@ethersproject/units";
-import { WalletPopupTrigger } from "./WalletPopup";
+import { WalletPopupTrigger } from "./Popup";
 
 interface IB {
   children: ReactNode;
@@ -105,7 +105,7 @@ const StyledButtonWithBalance = ({
           /* margin-left: auto; */
           flex: 1;
           display: flex;
-          justify-content:center;
+          justify-content: center;
           align-items: center;
           color: #e57d44;
           font-family: Poppins;
@@ -116,32 +116,34 @@ const StyledButtonWithBalance = ({
       >
         {Number(formatEther(balance ?? 0)).toLocaleString() ?? 0} DRAGON
       </span>
-      <WalletPopupTrigger>
-        <Button
-          onClick={onClick}
-          disabled={disabled}
-          styleCss={css`
-            background-color: transparent;
-            ${styleCss}
-            margin-right: ${resW(6)}px;
-            margin-left: auto;
-            padding-top: ${resW(2)}px;
-            padding-bottom: ${resW(2)}px;
-          `}
-          btnStyleCss={css`
-            /* border: 1.2px solid #f9f600; */
-            background: #727272;
-            color: #ffffff;
-            box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.25);
-            transition: transform 0.5s;
-            min-height: ${Math.max(resH(32), 32)}px;
-            min-width: ${resW(122)}px;
-            padding-left: ${resW(18)}px;
-            padding-right: ${resW(18)}px;
-          `}
-        >
-          {children}
-        </Button>
+      <WalletPopupTrigger asChild>
+        <div>
+          <Button
+            onClick={onClick}
+            disabled={disabled}
+            styleCss={css`
+              background-color: transparent;
+              ${styleCss}
+              margin-right: ${resW(6)}px;
+              margin-left: auto;
+              padding-top: ${resW(2)}px;
+              padding-bottom: ${resW(2)}px;
+            `}
+            btnStyleCss={css`
+              /* border: 1.2px solid #f9f600; */
+              background: #727272;
+              color: #ffffff;
+              box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.25);
+              transition: transform 0.5s;
+              min-height: ${Math.max(resH(32), 32)}px;
+              min-width: ${resW(122)}px;
+              padding-left: ${resW(18)}px;
+              padding-right: ${resW(18)}px;
+            `}
+          >
+            {children}
+          </Button>
+        </div>
       </WalletPopupTrigger>
     </div>
   );
