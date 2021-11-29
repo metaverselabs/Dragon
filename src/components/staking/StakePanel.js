@@ -4,10 +4,18 @@ import { Button } from "../Button";
 import { HorizontalGap } from "../HorizontalGap";
 import { StakePopupTrigger } from "../Popup";
 import { LpInfo } from "./LpInfo";
-import { LPV2_ADDR } from "../../../constants";
+import { useV2Contract } from "./hooks/useV2Contract";
+import { useApproved } from "./hooks/useApproved";
+import { AprroveBtn } from "./AprroveBtn";
+
+import { useEthers } from "@usedapp/core";
+import { UnstakeBtn } from "./UnstakeBtn";
 
 export const StakePanel = () => {
-  const LPTokenBalance = useTokenBalance(LPV2_ADDR, account);
+  const { approved } = useApproved();
+  const { account } = useEthers();
+  const skateDisabled = !account;
+
   const { resH, resW } = useResponsiveSize();
   return (
     <div
@@ -44,38 +52,25 @@ export const StakePanel = () => {
         `}
       >
         <HorizontalGap val={resW(80)} />
-        <Button
-          styleCss={css`
-            /* min-width: ${resW(170)}px;
-            height: ${resH(44)}px;
-            background: #2d2d2d; */
-          `}
-          btnStyleCss={css`
-            color: #e57d44;
-            min-width: ${resW(170)}px;
-            height: ${resH(44)}px;
-            background: #2d2d2d;
-            transition: transform 0.5s;
-            border-radius: 36px;
-          `}
-        >
-          Unstake
-        </Button>
+        <UnstakeBtn />
         <HorizontalGap val={resW(24)} />
-        {/* <StakePopupTrigger> */}
-        <Button
-          btnStyleCss={css`
-            transition: transform 0.5s;
-            min-width: ${resW(290)}px;
-            height: ${resH(44)}px;
-            background: #2d2d2d;
-            border-radius: 36px;
-            color: #e57d44;
-          `}
-        >
-          Approve Staking
-        </Button>
-        {/* </StakePopupTrigger> */}
+        {approved && (
+          <StakePopupTrigger>
+            <Button
+              btnStyleCss={css`
+                transition: transform 0.5s;
+                min-width: ${resW(290)}px;
+                height: ${resH(44)}px;
+                background: #2d2d2d;
+                border-radius: 36px;
+                color: #e57d44;
+              `}
+            >
+              Stake
+            </Button>
+          </StakePopupTrigger>
+        )}
+        {!approved && <AprroveBtn />}
       </div>
     </div>
   );
