@@ -16,6 +16,7 @@ import { useWindowSize } from "../../utils/useWindowSize";
 import { useApiCheck } from "./api";
 import { useConfetti } from "../Confetti/useConfetti";
 import { Confetti } from "../Confetti";
+import { TOKEN_ADDR } from "../../../constants";
 
 const left = require("../../../public/left.png?webp");
 const right = require("../../../public/right.png?webp");
@@ -153,19 +154,27 @@ export const BtnsImageSection = () => {
           </ClaimButton>
         )}
         <VerticalGap val={resH(24)} />
-        <ClaimButton
-          onClick={() => {}}
-          disabled={false}
-          styleCss={css`
-            z-index: 1;
-            font-family: Poppins;
-          `}
-          btnStyleCss={css`
-            /* padding-top: 2px; */
-          `}
+        <a
+          href={`https://app.uniswap.org/#/add/v2/ETH/${TOKEN_ADDR}`}
+          target="_blank"
+          rel="noreferrer"
         >
-          Uniswap Liquidity
-        </ClaimButton>
+          <ClaimButton
+            onClick={() => {
+              //
+            }}
+            disabled={false}
+            styleCss={css`
+              z-index: 1;
+              font-family: Poppins;
+            `}
+            btnStyleCss={css`
+              /* padding-top: 2px; */
+            `}
+          >
+            Uniswap Liquidity
+          </ClaimButton>
+        </a>
         <BottomImage
           src={left}
           alt={"left_flower"}
