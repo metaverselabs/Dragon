@@ -11,8 +11,11 @@ import { formatEther, parseUnits } from "@ethersproject/units";
 import { BigNumber } from "@ethersproject/bignumber";
 // import { useStake } from "./useStake";
 import { StakingState } from "./stakingState";
+import { useResponsiveSize } from "../../utils/useResponsiveSize";
+import { mq } from "../../styles/globals";
 
 export const StakeContent = () => {
+  const { resH, resW } = useResponsiveSize();
   const [amount, setAmount] = useState("0.00");
   const [insufficientBalance, setInsufficientBalance] = useState(false);
   const { account, library } = useEthers();
@@ -25,13 +28,17 @@ export const StakeContent = () => {
   const displayBalance = formatEther(lpTokenBalance?.toString() || 0);
 
   useEffect(() => {
-    if (lpTokenBalance && amount) {
-      // console.log("amount", amount);
-      if (lpTokenBalance.lt(parseUnits(amount, 18))) {
-        setInsufficientBalance(true);
-      } else {
-        setInsufficientBalance(false);
+    try {
+      if (lpTokenBalance && amount) {
+        const inputamount = parseUnits(amount, 18);
+        if (lpTokenBalance.lt(inputamount)) {
+          setInsufficientBalance(true);
+        } else {
+          setInsufficientBalance(false);
+        }
       }
+    } catch (e) {
+      console.warn(e);
     }
   }, [amount, lpTokenBalance]);
   // const { isMining, onClickStake } = useStake({
@@ -40,7 +47,12 @@ export const StakeContent = () => {
   // });
   const { isMining, onClickStake } = StakingState.useContainer();
   const onClickSendStake = () => {
-    onClickStake({ account, amount: parseUnits(amount || "0", 18) });
+    try {
+      const inputamount = parseUnits(amount, 18);
+      onClickStake({ account, amount: inputamount });
+    } catch (e) {
+      console.warn(e);
+    }
   };
   const disabled = insufficientBalance || isMining;
   const btnText = insufficientBalance
@@ -81,6 +93,8 @@ export const StakeContent = () => {
       <div
         css={css`
           position: relative;
+          min-width: ${resW(484)}px;
+          height: 73px;
         `}
       >
         <input
@@ -88,7 +102,7 @@ export const StakeContent = () => {
             border: 1px solid #ffffff;
             box-sizing: border-box;
             border-radius: 8px;
-            width: 484px;
+            min-width: ${resW(484)}px;
             height: 73px;
             background-color: black;
             padding-left: 20px;
@@ -98,7 +112,12 @@ export const StakeContent = () => {
             font-weight: bold;
             font-size: 20px;
             line-height: 30px;
-            padding-right: 195px;
+            padding-right: ${resW(195)}px;
+            ${mq[1]} {
+              padding-right: 0;
+            }
+            ${mq[0]} {
+            }
           `}
           type="text"
           inputMode="decimal"
@@ -116,13 +135,20 @@ export const StakeContent = () => {
           css={css`
             position: absolute;
             right: 0;
-            width: 195px;
+            width: 20%;
             height: 73px;
+            width: 195px;
             /* background-color: gray; */
             top: 0;
             bottom: 0;
             display: flex;
             align-items: center;
+            ${mq[1]} {
+              width: 150px;
+            }
+            ${mq[0]} {
+              width: 130px;
+            }
           `}
         >
           <span
@@ -132,11 +158,19 @@ export const StakeContent = () => {
               font-weight: bold;
               font-size: 16px;
               line-height: 24px;
+              ${mq[1]} {
+                font-size: 13px;
+                line-height: 13px;
+              }
+              ${mq[0]} {
+                font-size: 9px;
+                line-height: 9px;
+              }
             `}
           >
             DRAGON/ETH
           </span>
-          <HorizontalGap val={12} />
+          <HorizontalGap val={resW(12)} />
           <Button
             btnStyleCss={css`
               width: 55px;
@@ -169,7 +203,7 @@ export const StakeContent = () => {
           disabled={disabled}
           btnStyleCss={css`
             transition: transform 0.5s;
-            min-width: ${484}px;
+            min-width: ${resW(484)}px;
             height: ${44}px;
             background: #2d2d2d;
             border-radius: 36px;
