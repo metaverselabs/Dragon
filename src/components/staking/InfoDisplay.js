@@ -1,9 +1,17 @@
 import { css } from "@emotion/react";
+import { useEthers, useTokenBalance } from "@usedapp/core";
 import { useResponsiveSize } from "../../utils/useResponsiveSize";
 import { HorizontalGap } from "../HorizontalGap";
 import { DataSection } from "./DataSection";
+import { LPV2_ADDR, LP_REWARD_ADDR } from "../../../constants";
+import { formatEther, parseUnits } from "@ethersproject/units";
 
 export const InfoDisplay = () => {
+  const lpStakedTotal = useTokenBalance(LPV2_ADDR, LP_REWARD_ADDR);
+  console.log("lpStakedTotal", lpStakedTotal);
+  const displayLpStakedTotal = Number(
+    formatEther(lpStakedTotal?.toString() || 0)
+  ).toFixed(2);
   const { resH, resW } = useResponsiveSize();
   return (
     <div
@@ -25,7 +33,7 @@ export const InfoDisplay = () => {
       <HorizontalGap val={resW(80)} />
       <DataSection
         title={"LPL"}
-        val={"$--"}
+        val={displayLpStakedTotal}
         hint={"Liquidity Provider Locked"}
       />
       <div
