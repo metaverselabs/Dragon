@@ -43,7 +43,7 @@
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
-    "imagemin-svgo": "^10.0.0",
+    "imagemin-svgo": "9.0.0",
     "jimp": "^0.16.1",
     "lqip-loader": "^2.2.1",
     "responsive-loader": "^2.3.0",
