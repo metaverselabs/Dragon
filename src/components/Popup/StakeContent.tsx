@@ -176,7 +176,13 @@ export const StakeContent = () => {
             color: ${disabled ? "white" : "#e57d44"};
           `}
         >
-          {btnText}
+          <span
+            css={css`
+              transform: translateY(2px);
+            `}
+          >
+            {btnText}
+          </span>
         </Button>
       </div>
     </div>
