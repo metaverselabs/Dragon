@@ -18,7 +18,6 @@ const v2Contract = new Contract(LPV2_ADDR, LPInterface);
 export const AprroveBtn = () => {
   const { account } = useEthers();
   const { resH, resW } = useResponsiveSize();
-  const { approved } = useApproved();
   const { state, send } = useContractFunction(v2Contract, "approve", {
     transactionName: "Approve",
   });

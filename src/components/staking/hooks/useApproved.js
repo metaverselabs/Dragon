@@ -5,16 +5,20 @@ import { useEffect, useState } from "react";
 export const useApproved = () => {
   const { account, library } = useEthers();
   const [approved, setApproved] = useState(false);
-  const LPTokenBalance = useTokenBalance(LPV2_ADDR, account);
+  const lpTokenBalance = useTokenBalance(LPV2_ADDR, account);
   const allowanceLP = useTokenAllowance(LPV2_ADDR, account, LP_REWARD_ADDR);
+  // console.log("allowanceLP > lpTokenBalance", allowanceLP > lpTokenBalance);
+  // console.log("allowanceLP", allowanceLP.toString());
+  // console.log("lpTokenBalance", lpTokenBalance.toString());
+  // console.log("allowanceLP.lt(lpTokenBalance)", allowanceLP.gt(lpTokenBalance));
 
   useEffect(() => {
-    if (allowanceLP > LPTokenBalance) {
+    if (allowanceLP && allowanceLP.gt(lpTokenBalance)) {
       setApproved(true);
     } else {
       setApproved(false);
     }
-  }, [LPTokenBalance, allowanceLP]);
+  }, [lpTokenBalance, allowanceLP]);
 
-  return { approved };
+  return { approved, lpTokenBalance, allowanceLP };
 };

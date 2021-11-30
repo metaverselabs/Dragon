@@ -3,9 +3,22 @@ import { HorizontalGap } from "../HorizontalGap";
 import { DataSection } from "./DataSection";
 import { Button } from "../Button";
 import { useResponsiveSize } from "../../utils/useResponsiveSize";
+import { useEthers } from "@usedapp/core";
+import { useEarned } from "./hooks/useEarned";
+import { formatEther, parseUnits } from "@ethersproject/units";
+import { useGetReward } from "./hooks/useGetReward";
 
 export const ClaimPanel = () => {
+  const { account, library } = useEthers();
+  const earned = useEarned({ account });
   const { resH, resW } = useResponsiveSize();
+  const displayEarned = Number(formatEther(earned?.toString() || 0)).toFixed(2);
+  const { isMining, onClickClaim } = useGetReward();
+  const claimDisabled = !earned || earned.eq(0) || isMining;
+  const btnText = isMining ? "Claiming..." : "Claim";
+  const onClaim = () => {
+    onClickClaim({ account });
+  };
   return (
     <div
       css={css`
@@ -34,7 +47,7 @@ export const ClaimPanel = () => {
         `}
       >
         <HorizontalGap val={resW(80)} />
-        <DataSection title={"--"} hint={"DRAGON Reward"} />
+        <DataSection title={displayEarned} hint={"DRAGON Reward"} />
       </div>
       <div
         css={css`
@@ -56,16 +69,18 @@ export const ClaimPanel = () => {
         `}
       >
         <Button
+          onClick={onClaim}
+          disabled={claimDisabled}
           btnStyleCss={css`
             transition: transform 0.5s;
             min-width: ${resW(109)}px;
             height: ${resH(44)}px;
             background: #2d2d2d;
             border-radius: 36px;
-            color: #e57d44;
+            color: ${claimDisabled ? "white" : "#e57d44"};
           `}
         >
-          Claim
+          {btnText}
         </Button>
       </div>
     </div>

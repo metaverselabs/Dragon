@@ -4,7 +4,7 @@ import { Button } from "../Button";
 import { HorizontalGap } from "../HorizontalGap";
 import { StakePopupTrigger } from "../Popup";
 import { LpInfo } from "./LpInfo";
-import { useV2Contract } from "./hooks/useV2Contract";
+// import { useV2Contract } from "./hooks/useV2Contract";
 import { useApproved } from "./hooks/useApproved";
 import { AprroveBtn } from "./AprroveBtn";
 
@@ -12,11 +12,13 @@ import { useEthers } from "@usedapp/core";
 import { UnstakeBtn } from "./UnstakeBtn";
 
 export const StakePanel = () => {
-  const { approved } = useApproved();
+  const { approved, lpTokenBalance, allowanceLP } = useApproved();
   const { account } = useEthers();
   const skateDisabled = !account;
-
   const { resH, resW } = useResponsiveSize();
+
+  console.log("lpTokenBalance", lpTokenBalance);
+  console.log("allowanceLP", allowanceLP);
   return (
     <div
       css={css`
