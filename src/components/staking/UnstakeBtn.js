@@ -4,6 +4,7 @@ import { useEthers } from "@usedapp/core";
 import { useResponsiveSize } from "../../utils/useResponsiveSize";
 import { useExit } from "./hooks/useExit";
 import { useStakedBalance } from "./hooks/useStakedBalance";
+import { mq } from "../../styles/globals";
 
 export const UnstakeBtn = () => {
   const { account } = useEthers();
@@ -32,6 +33,13 @@ export const UnstakeBtn = () => {
         background: #2d2d2d;
         transition: transform 0.5s;
         border-radius: 36px;
+        padding-left: 15px;
+        padding-right: 15px;
+        ${mq[1]} {
+          min-width: ${resW(290)}px;
+        }
+        ${mq[0]} {
+        }
       `}
     >
       {btnText}

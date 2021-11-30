@@ -82,8 +82,16 @@ export default function Home() {
             width: ${resW(980)}px;
             height: ${resH(170)}px;
             display: flex;
+            flex: 1;
             flex-direction: row;
             justify-content: space-between;
+            ${mq[1]} {
+              flex-direction: column;
+              justify-content: flex-start;
+            }
+            ${mq[0]} {
+              flex-direction: column;
+            }
           `}
         >
           <StakePanel />

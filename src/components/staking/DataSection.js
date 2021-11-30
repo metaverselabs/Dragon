@@ -3,7 +3,7 @@ import { useResponsiveSize } from "../../utils/useResponsiveSize";
 import { mq } from "../../styles/globals";
 import { HorizontalGap } from "../HorizontalGap";
 
-export const DataSection = ({ title, val, hint, ...props }) => {
+export const DataSection = ({ title, val, hint, hintcss, ...props }) => {
   const { resH, resW } = useResponsiveSize();
   return (
     <div
@@ -26,10 +26,16 @@ export const DataSection = ({ title, val, hint, ...props }) => {
           font-size: ${resW(36)}px;
           line-height: ${resW(54)}px;
           ${mq[1]} {
-            font-size: ${resW(36) * 1.2}px;
-            line-height: ${resW(54) * 1.2}px;
+            font-size: ${resW(36) * 1.4}px;
+            line-height: ${resW(54) * 1.4}px;
+            flex-direction: column;
+            align-items: flex-start;
           }
           ${mq[0]} {
+            font-size: ${resW(36) * 1.7}px;
+            line-height: ${resW(54) * 1.7}px;
+            flex-direction: column;
+            align-items: flex-start;
           }
           color: #ffffff;
         `}
@@ -46,10 +52,15 @@ export const DataSection = ({ title, val, hint, ...props }) => {
           font-size: ${resW(16)}px;
           line-height: ${resW(24)}px;
           ${mq[1]} {
-            font-size: ${resW(16) * 1.2}px;
-            line-height: ${resW(24) * 1.2}px;
+            font-size: ${resW(16) * 1.4}px;
+            line-height: ${resW(24) * 1.4}px;
+            ${hintcss}/* overflow: visible;
+            width: 90%;
+            text-align: center; */
           }
           ${mq[0]} {
+            font-size: ${resW(16) * 1.7}px;
+            line-height: ${resW(24) * 1.7}px;
           }
           color: #8b8b8b;
         `}

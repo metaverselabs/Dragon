@@ -10,6 +10,7 @@ import { AprroveBtn } from "./AprroveBtn";
 
 import { useEthers } from "@usedapp/core";
 import { UnstakeBtn } from "./UnstakeBtn";
+import { mq } from "../../styles/globals";
 
 export const StakePanel = () => {
   const { approved, lpTokenBalance, allowanceLP } = useApproved();
@@ -33,13 +34,19 @@ export const StakePanel = () => {
         display: flex;
         align-items: center;
         flex-direction: column;
+        ${mq[1]} {
+          width: 100%;
+        }
+        ${mq[0]} {
+          width: 100%;
+        }
       `}
     >
       <LpInfo />
       <div
         css={css`
           height: 1px;
-          width: ${resW(484)}px;
+          width: 75%;
           background-color: #444444;
         `}
       />
@@ -49,11 +56,22 @@ export const StakePanel = () => {
           height: ${resH(116)}px;
           display: flex;
           align-items: center;
+
+          ${mq[1]} {
+            justify-content: center;
+          }
           /* flex-direction: column; */
           /* background-color: azure; */
         `}
       >
-        <HorizontalGap val={resW(80)} />
+        <HorizontalGap
+          val={resW(80)}
+          css={css`
+            ${mq[1]} {
+              margin-left: 0;
+            }
+          `}
+        />
         <UnstakeBtn />
         <HorizontalGap val={resW(24)} />
         {approved && (
@@ -66,6 +84,8 @@ export const StakePanel = () => {
                 background: #2d2d2d;
                 border-radius: 36px;
                 color: #e57d44;
+                padding-left: 15px;
+                padding-right: 15px;
               `}
             >
               Stake

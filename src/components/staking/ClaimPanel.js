@@ -7,6 +7,7 @@ import { useEthers } from "@usedapp/core";
 import { useEarned } from "./hooks/useEarned";
 import { formatEther, parseUnits } from "@ethersproject/units";
 import { useGetReward } from "./hooks/useGetReward";
+import { mq } from "../../styles/globals";
 
 export const ClaimPanel = () => {
   const { account, library } = useEthers();
@@ -33,6 +34,14 @@ export const ClaimPanel = () => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        ${mq[1]} {
+          width: 100%;
+          margin-top: ${resH(30)}px;
+        }
+        ${mq[0]} {
+          /* width: 100%;
+          margin-top: ${resH(30)}px; */
+        }
       `}
     >
       <div
@@ -44,16 +53,45 @@ export const ClaimPanel = () => {
           flex-direction: row;
           position: relative;
           /* background-color: aqua; */
+          ${mq[1]} {
+            flex-direction: column;
+            justify-content: center;
+          }
+          ${mq[0]} {
+          }
         `}
       >
-        <HorizontalGap val={resW(80)} />
-        <DataSection title={displayEarned} hint={"DRAGON Reward"} />
+        <HorizontalGap
+          val={resW(80)}
+          css={css`
+            ${mq[1]} {
+              margin-left: 0;
+            }
+          `}
+        />
+        <DataSection
+          title={displayEarned}
+          hint={"DRAGON Reward"}
+          css={css`
+            ${mq[1]} {
+              align-items: center;
+            }
+          `}
+          hintcss={css`
+            overflow: visible;
+            width: 90%;
+            text-align: center;
+          `}
+        />
       </div>
       <div
         css={css`
           height: 1px;
-          width: ${resW(187)}px;
+          width: 75%;
           background-color: #444444;
+          /* ${mq[1]} {
+            width: ${resW(484)}px;
+          } */
         `}
       />
       <div
@@ -78,6 +116,8 @@ export const ClaimPanel = () => {
             background: #2d2d2d;
             border-radius: 36px;
             color: ${claimDisabled ? "white" : "#e57d44"};
+            padding-left: 15px;
+            padding-right: 15px;
           `}
         >
           {btnText}

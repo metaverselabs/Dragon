@@ -6,18 +6,22 @@ import { DataSection } from "./DataSection";
 import { LPV2_ADDR, LP_REWARD_ADDR } from "../../../constants";
 import { formatEther, parseUnits } from "@ethersproject/units";
 
+// reference
+//const aprToApy = (apr, frequency = BLOCKS_IN_A_YEAR) => ((1 + apr / 100 / frequency) ** frequency - 1) * 100
+//const apy = aprToApy((((volume / 7) * 365 * 0.0025) / liquidity) * 100, 3650)
 export const InfoDisplay = () => {
   const lpStakedTotal = useTokenBalance(LPV2_ADDR, LP_REWARD_ADDR);
+  const { account } = useEthers();
   console.log("lpStakedTotal", lpStakedTotal);
-  const displayLpStakedTotal = Number(
-    formatEther(lpStakedTotal?.toString() || 0)
-  ).toFixed(2);
+  const displayLpStakedTotal = !!account
+    ? Number(formatEther(lpStakedTotal?.toString() || 0)).toFixed(2)
+    : "--";
   const { resH, resW } = useResponsiveSize();
   return (
     <div
       css={css`
         width: ${resW(980)}px;
-        height: ${resH(170)}px;
+        height: ${170}px;
         border-radius: 16px;
         border: solid 1.5px transparent;
         background-image: linear-gradient(black, black),
