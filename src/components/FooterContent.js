@@ -133,17 +133,17 @@ const Left = () => {
           alt={"medium"}
         />
       </a> */}
-      <a
-        href={"https://docs.dragon.xyz/"}
-        target={"_blank"}
+      <div
+        // href={"https://docs.dragon.xyz/"}
+        // target={"_blank"}
+        // rel="noreferrer"
         css={css`
           display: flex;
           align-items: center;
           justify-content: center;
-          cursor: pointer;
+          /* cursor: pointer; */
           transform: translateY(2.5px);
         `}
-        rel="noreferrer"
       >
         <BottomImage
           styleCss={css`
@@ -201,7 +201,7 @@ const Left = () => {
         >
           Metaverse Labs
         </span>
-      </a>
+      </div>
     </div>
   );
 };
