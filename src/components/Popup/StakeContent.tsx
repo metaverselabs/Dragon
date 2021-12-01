@@ -95,26 +95,38 @@ export const StakeContent = () => {
           position: relative;
           min-width: ${resW(484)}px;
           height: 73px;
+          display: flex;
+          border: 1px solid #ffffff;
+          box-sizing: border-box;
+          border-radius: 8px;
+          min-width: ${resW(484)}px;
+          height: 73px;
+          background-color: black;
+
+          /* padding-right: ${resW(195)}px; */
         `}
       >
         <input
+          // size={10}
+          size={4}
           css={css`
-            border: 1px solid #ffffff;
-            box-sizing: border-box;
-            border-radius: 8px;
-            min-width: ${resW(484)}px;
-            height: 73px;
-            background-color: black;
-            padding-left: 20px;
             color: white;
             font-family: Poppins;
             font-style: normal;
             font-weight: bold;
             font-size: 20px;
             line-height: 30px;
-            padding-right: ${resW(195)}px;
+
+            flex: 1;
+            padding-left: 20px;
+            background-color: transparent;
+            border: none;
+            /* margin-right: auto; */
+
+            /* margin: 0; */
+
             ${mq[1]} {
-              padding-right: 0;
+              /* padding-right: 0; */
             }
             ${mq[0]} {
             }
@@ -133,8 +145,8 @@ export const StakeContent = () => {
         />
         <div
           css={css`
-            position: absolute;
-            right: 0;
+            /* position: absolute;
+            right: 0; */
             width: 20%;
             height: 73px;
             width: 195px;
@@ -185,40 +197,40 @@ export const StakeContent = () => {
             Max
           </Button>
         </div>
-        <VerticalGap val={12} />
+      </div>
+      <VerticalGap val={12} />
+      <span
+        css={css`
+          font-family: Poppins;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 21px;
+        `}
+      >
+        Balance: {displayBalance}
+      </span>
+      <VerticalGap val={19} />
+      <Button
+        onClick={onClickSendStake}
+        disabled={disabled}
+        btnStyleCss={css`
+          transition: transform 0.5s;
+          min-width: ${resW(484)}px;
+          height: ${44}px;
+          background: #2d2d2d;
+          border-radius: 36px;
+          color: ${disabled ? "white" : "#e57d44"};
+        `}
+      >
         <span
           css={css`
-            font-family: Poppins;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 21px;
+            transform: translateY(2px);
           `}
         >
-          Balance: {displayBalance}
+          {btnText}
         </span>
-        <VerticalGap val={19} />
-        <Button
-          onClick={onClickSendStake}
-          disabled={disabled}
-          btnStyleCss={css`
-            transition: transform 0.5s;
-            min-width: ${resW(484)}px;
-            height: ${44}px;
-            background: #2d2d2d;
-            border-radius: 36px;
-            color: ${disabled ? "white" : "#e57d44"};
-          `}
-        >
-          <span
-            css={css`
-              transform: translateY(2px);
-            `}
-          >
-            {btnText}
-          </span>
-        </Button>
-      </div>
+      </Button>
     </div>
   );
 };

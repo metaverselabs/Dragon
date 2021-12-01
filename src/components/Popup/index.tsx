@@ -124,7 +124,7 @@ const PopupContent = ({ isCopied, onCopy, type }) => {
           height: ${height}px;
         }
         ${mq[0]} {
-          width: ${width * 0.6}px;
+          width: ${365}px;
           height: ${height}px;
         }
       `}
