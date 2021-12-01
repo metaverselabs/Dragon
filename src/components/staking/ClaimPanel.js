@@ -118,6 +118,14 @@ export const ClaimPanel = () => {
             color: ${claimDisabled ? "white" : "#e57d44"};
             padding-left: 15px;
             padding-right: 15px;
+            ${mq[1]} {
+              font-size: 13px;
+              line-height: 13px;
+            }
+            ${mq[0]} {
+              font-size: 9px;
+              line-height: 9px;
+            }
           `}
         >
           {btnText}

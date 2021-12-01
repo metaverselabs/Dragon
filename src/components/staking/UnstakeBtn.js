@@ -37,8 +37,12 @@ export const UnstakeBtn = () => {
         padding-right: 15px;
         ${mq[1]} {
           min-width: ${resW(290)}px;
+          font-size: 13px;
+          line-height: 13px;
         }
         ${mq[0]} {
+          font-size: 9px;
+          line-height: 9px;
         }
       `}
     >

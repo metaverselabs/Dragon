@@ -73,6 +73,10 @@ export const StakeContent = () => {
         padding-right: 80px;
         padding-top: 60px;
         padding-bottom: 57px;
+        ${mq[0]} {
+          padding-left: 50px;
+          padding-right: 50px;
+        }
       `}
     >
       <CloseBtn />
@@ -93,13 +97,12 @@ export const StakeContent = () => {
       <div
         css={css`
           position: relative;
-          min-width: ${resW(484)}px;
+          min-width: ${Math.min(resW(484), 500)}px;
           height: 73px;
           display: flex;
           border: 1px solid #ffffff;
           box-sizing: border-box;
           border-radius: 8px;
-          min-width: ${resW(484)}px;
           height: 73px;
           background-color: black;
 
@@ -191,6 +194,15 @@ export const StakeContent = () => {
               border-radius: 27px;
               padding-top: 3px;
               color: #e57d44;
+              ${mq[1]} {
+                font-size: 13px;
+                line-height: 13px;
+              }
+              ${mq[0]} {
+                font-size: 9px;
+                line-height: 9px;
+                width: ${45}px;
+              }
             `}
             onClick={setMax}
           >
@@ -216,11 +228,19 @@ export const StakeContent = () => {
         disabled={disabled}
         btnStyleCss={css`
           transition: transform 0.5s;
-          min-width: ${resW(484)}px;
+          min-width: ${Math.min(resW(484), 500)}px;
           height: ${44}px;
           background: #2d2d2d;
           border-radius: 36px;
           color: ${disabled ? "white" : "#e57d44"};
+          ${mq[1]} {
+            font-size: 13px;
+            line-height: 13px;
+          }
+          ${mq[0]} {
+            font-size: 9px;
+            line-height: 9px;
+          }
         `}
       >
         <span

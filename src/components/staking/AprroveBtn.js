@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { MaxUint256 } from "@ethersproject/constants";
 import { useEthers } from "@usedapp/core";
 // import { useV2Contract } from "./hooks/useV2Contract";
+import { mq } from "../../styles/globals";
 
 const LPInterface = new Interface(UniswapV2Pair);
 const v2Contract = new Contract(LPV2_ADDR, LPInterface);
@@ -46,6 +47,14 @@ export const AprroveBtn = () => {
         background: #2d2d2d;
         border-radius: 36px;
         color: ${disabled ? "white" : "#e57d44"};
+        ${mq[1]} {
+          font-size: 13px;
+          line-height: 13px;
+        }
+        ${mq[0]} {
+          font-size: 9px;
+          line-height: 9px;
+        }
       `}
     >
       {btnText}
