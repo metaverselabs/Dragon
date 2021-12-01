@@ -11,6 +11,7 @@ const twitter = require("../../public/twitter.png?inline");
 const discord = require("../../public/discord.png?inline");
 const github = require("../../public/github.png?inline");
 const medium = require("../../public/medium.png?inline");
+const box = require("../../public/box.png?inline");
 // const mirror = require("../../public/mirror.png?inline");
 
 const imgs = [
@@ -29,11 +30,11 @@ const imgs = [
     alt: "github",
     href: "https://github.com/metaverselabs/Dragon",
   },
-  // {
-  //   src: mirror,
-  //   alt: "mirror",
-  //   href: "#",
-  // },
+  {
+    src: medium,
+    alt: "medium",
+    href: "https://blog.dragon.xyz/",
+  },
 ];
 
 const Right = () => {
@@ -97,7 +98,7 @@ const Left = () => {
         align-items: center;
       `}
     >
-      <a
+      {/* <a
         css={css`
           margin-right: 24px;
         `}
@@ -131,50 +132,59 @@ const Left = () => {
           src={medium}
           alt={"medium"}
         />
-      </a>
+      </a> */}
       <a
         href={"https://docs.dragon.xyz/"}
         target={"_blank"}
         css={css`
           display: flex;
           align-items: center;
+          justify-content: center;
           cursor: pointer;
+          transform: translateY(2.5px);
         `}
         rel="noreferrer"
       >
         <BottomImage
           styleCss={css`
+            width: 45px;
+            height: 40px;
             ${mq[1]} {
-              width: 15px;
-              height: 15px;
+              width: ${45 * 0.6}px;
+              height: ${40 * 0.6}px;
             }
             ${mq[0]} {
-              width: 13px;
-              height: 13px;
+              width: ${45 * 0.4}px;
+              height: ${40 * 0.4}px;
             }
           `}
           imgCss={css`
+            width: 45px;
+            height: 40px;
             ${mq[1]} {
-              width: 15px;
-              height: 15px;
+              width: ${45 * 0.6}px;
+              height: ${40 * 0.6}px;
             }
             ${mq[0]} {
-              width: 13px;
-              height: 13px;
+              width: ${45 * 0.4}px;
+              height: ${40 * 0.4}px;
             }
           `}
-          width={"25px"}
-          height={"25px"}
-          src={doc}
+          // width={"25px"}
+          // height={"25px"}
+          src={box}
           alt={"document"}
         />
         <span
           css={css`
-            font-family: Poppins;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Cabin;
             color: #ffffff;
             font-size: 16px;
-            line-height: 25px;
-            padding-left: ${resW(15)}px;
+            line-height: 19px;
+            padding-left: ${resW(6)}px;
             ${mq[1]} {
               font-size: 12px;
               line-height: 15px;
@@ -182,14 +192,14 @@ const Left = () => {
             }
             ${mq[0]} {
               font-size: 9px;
-              height: 13px;
-              line-height: 13px;
+              height: 10px;
+              line-height: 11px;
               vertical-align: baseline;
               /* transform: translateY(3px); */
             }
           `}
         >
-          Docs
+          Metaverse Labs
         </span>
       </a>
     </div>
