@@ -10,6 +10,7 @@ export const LeftNav = () => {
   return (
     <div
       css={css`
+        /* background-color: aliceblue; */
         display: flex;
         flex-direction: row;
         align-items: center;

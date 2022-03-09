@@ -37,12 +37,14 @@ const imgs = [
   },
 ];
 
-const Right = () => {
+const Right = ({ cssstyle }) => {
   return (
     <div
       css={css`
         display: flex;
         margin-left: auto;
+        /* margin-right: 10%; */
+        ${cssstyle}
       `}
     >
       {imgs.map((obj) => {
@@ -206,7 +208,7 @@ const Left = () => {
   );
 };
 
-export const FooterContent = () => {
+export const FooterContent = ({ cssstyle }) => {
   return (
     <div
       css={css`
@@ -215,10 +217,11 @@ export const FooterContent = () => {
         display: flex;
         align-items: center;
         padding-bottom: 12px;
+        justify-content: center;
       `}
     >
-      <Left />
-      <Right />
+      {/* <Left /> */}
+      <Right cssstyle={cssstyle} />
     </div>
   );
 };

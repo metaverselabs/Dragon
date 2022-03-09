@@ -1,153 +1,17 @@
 import React, {
   ReactChild,
   ReactChildren,
-  ReactNode,
   useEffect,
   useRef,
   useState,
 } from "react";
-import { Button } from "./Button";
 import { css } from "@emotion/react";
 import { ChainId, useEthers, useTokenBalance } from "@usedapp/core";
 import { config } from "../../constants";
 import { useShortAddressWithEns } from "../utils/useShortAddressWithEns";
-import { useResponsiveSize } from "../utils/useResponsiveSize";
-import { mq } from "../styles/globals";
 import { TOKEN_ADDR } from "../../constants";
-import { BigNumber } from "@ethersproject/bignumber";
-import { formatEther } from "@ethersproject/units";
-import { WalletPopupTrigger } from "./Popup";
-
-interface IB {
-  children: ReactNode;
-  onClick?: any;
-  disabled?: any;
-  styleCss?: any;
-  btnStyleCss?: any;
-}
-
-const StyledBtn = ({
-  children,
-  onClick,
-  disabled,
-  styleCss,
-  btnStyleCss,
-}: IB) => {
-  const { resH, resW } = useResponsiveSize();
-  return (
-    <Button
-      onClick={onClick}
-      disabled={disabled}
-      styleCss={css`
-        background-color: transparent;
-        ${styleCss}
-      `}
-      btnStyleCss={css`
-        transition: transform 0.5s;
-        min-height: ${Math.max(resH(44), 44)}px;
-        min-width: ${resW(154)}px;
-        padding-left: ${resW(20)}px;
-        padding-right: ${resW(20)}px;
-        font-size: ${16}px;
-        ${mq[1]} {
-          font-size: 13px;
-        }
-        ${mq[0]} {
-          font-size: 10px;
-        }
-        ${btnStyleCss}
-      `}
-    >
-      {children}
-    </Button>
-  );
-};
-
-const StyledButtonWithBalance = ({
-  children,
-  onClick,
-  disabled,
-  styleCss,
-  btnStyleCss,
-  balance,
-}: IB & { balance: BigNumber }) => {
-  const { resH, resW } = useResponsiveSize();
-  return (
-    <div
-      css={css`
-        min-height: ${Math.max(resH(44), 44)}px;
-        min-width: ${resW(240)}px;
-        background-color: #2d2d2d;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        /* flex-direction: column-reverse;
-        align-items: right; */
-        font-size: ${16}px;
-        ${btnStyleCss}
-        @media (max-width: 1000px) {
-          background-color: transparent;
-        }
-        ${mq[1]} {
-          font-size: 13px;
-        }
-        ${mq[0]} {
-          font-size: 10px;
-        }
-      `}
-    >
-      <span
-        css={css`
-          padding-left: ${resW(18)}px;
-          padding-right: ${resW(18)}px;
-          // padding-top: ${resW(10)}px;
-          // padding-bottom: ${resW(6)}px;
-          /* margin-left: auto; */
-          flex: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: #e57d44;
-          font-family: Poppins;
-          @media (max-width: 1000px) {
-            display: none;
-          }
-        `}
-      >
-        {Number(formatEther(balance ?? 0)).toLocaleString() ?? 0} DRAGON
-      </span>
-      <WalletPopupTrigger>
-        <div>
-          <Button
-            onClick={onClick}
-            disabled={disabled}
-            styleCss={css`
-              background-color: transparent;
-              ${styleCss}
-              margin-right: ${resW(6)}px;
-              margin-left: auto;
-              padding-top: ${resW(2)}px;
-              padding-bottom: ${resW(2)}px;
-            `}
-            btnStyleCss={css`
-              /* border: 1.2px solid #f9f600; */
-              background: #727272;
-              color: #ffffff;
-              box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.25);
-              transition: transform 0.5s;
-              min-height: ${Math.max(resH(32), 32)}px;
-              min-width: ${resW(122)}px;
-              padding-left: ${resW(18)}px;
-              padding-right: ${resW(18)}px;
-            `}
-          >
-            {children}
-          </Button>
-        </div>
-      </WalletPopupTrigger>
-    </div>
-  );
-};
+import { StyledButtonWithBalance } from "./StyledButtonWithBalance";
+import { StyledBtn } from "./StyledBtn";
 
 export const WalletButton = () => {
   const { chainId, library, account, activateBrowserWallet, deactivate } =

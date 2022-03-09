@@ -73,7 +73,8 @@ export default function Home() {
     <div css={OuterDivCss}>
       <div css={DivCss}>
         <Header />
-        <LeftNav />
+        {/* <LeftNav /> */}
+        <VerticalGap val={resH(95)} />
         <VerticalGap val={resH(136)} />
         <InfoDisplay />
         <VerticalGap val={resH(30)} />
@@ -100,7 +101,11 @@ export default function Home() {
       </div>
       <footer css={FonterOuterCss}>
         <div css={Fonter}>
-          <FooterContent />
+          <FooterContent
+            cssstyle={css`
+              margin: auto;
+            `}
+          />
         </div>
       </footer>
     </div>

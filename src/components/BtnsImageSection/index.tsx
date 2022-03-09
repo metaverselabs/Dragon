@@ -123,8 +123,8 @@ export const BtnsImageSection = () => {
         )}
         {isConnected && (!!apiErrTxt || loadingApi) && (
           <ClaimButton
-            onClick={!!apiErrTxt ? resendApi : () => {}}
-            disabled={!!apiErrTxt ? false : true}
+            onClick={apiErrTxt ? resendApi : () => {}}
+            disabled={apiErrTxt ? false : true}
             styleCss={css`
               z-index: 1;
               font-family: Poppins;

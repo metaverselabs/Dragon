@@ -25,6 +25,7 @@ export const Header = () => {
         @media (max-width: 1100px) {
           margin-bottom: 24px;
         }
+        position: relative;
       `}
     >
       <span
@@ -44,12 +45,17 @@ export const Header = () => {
           }
         `}
       >
-        Dragon Metaverse
+        Dragon
       </span>
       <ul
         css={css`
           width: 203px;
           height: 24px;
+          left: 0;
+          right: 0;
+          margin: auto;
+
+          position: absolute;
           /* background-color: antiquewhite; */
           /* position: absolute; */
           display: flex;
@@ -65,8 +71,7 @@ export const Header = () => {
           list-style: none;
           @media (max-width: 1100px) {
             position: absolute;
-            transform: translate(-50%, 24px);
-            left: 50%;
+
             width: 190px;
           }
           ${mq[1]} {
@@ -90,8 +95,8 @@ export const Header = () => {
             ),
           },
           {
-            href: "/staking",
-            txt: "Farming",
+            href: "/chi",
+            txt: "CHI",
             Tag: ({ children, ...props }) => (
               <Link {...props}>
                 <a>{children}</a>
