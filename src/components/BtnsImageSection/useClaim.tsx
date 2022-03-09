@@ -42,7 +42,7 @@ export const useClaim = ({
       if (account && isRealQualifed && !isClaimed && toggleState) {
         toggle(false);
         const params = merkleData;
-        if (!!params) {
+        if (params) {
           try {
             const ctx = await MerkleContract.claim(
               params.index,

@@ -28,7 +28,7 @@ interface useIsQualifedOrClaimedProps {
   provider: any;
   isRealQualifed: boolean;
   merkleData: null | Params;
-  account: string
+  account: string;
 }
 interface useIsQualifedOrClaimedReturnType {
   isClaimed: boolean;
@@ -47,7 +47,7 @@ export const useIsClaimed = ({
   provider,
   isRealQualifed,
   merkleData,
-  account
+  account,
 }: useIsQualifedOrClaimedProps): useIsQualifedOrClaimedReturnType => {
   const [isClaimed, setIsClaimed] = useState<boolean>(false);
   const MerkleContract = useMerkleContract({ provider });
@@ -59,7 +59,7 @@ export const useIsClaimed = ({
     if (isRealQualifed) {
       (async () => {
         const params = merkleData as Params;
-        if (!!params) {
+        if (params) {
           const isClaimedState = await MerkleContract.isClaimed(params.index);
           setIsClaimed(isClaimedState);
         } else {
@@ -67,7 +67,7 @@ export const useIsClaimed = ({
         }
       })();
     } else {
-      setIsClaimed(false)
+      setIsClaimed(false);
     }
   }, [MerkleContract, isRealQualifed, merkleData, account]);
 
