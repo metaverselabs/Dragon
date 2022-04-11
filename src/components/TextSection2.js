@@ -5,7 +5,7 @@ import { VerticalGap } from "./VerticalGap";
 import { BottomImage } from "./BottomImage";
 import textImg from "../../public/text.png";
 import { BreakLine } from "./BreakLine";
-
+import { TOKEN_ADDR } from "../../constants";
 const Colorspan = ({ children }) => (
   <span
     css={css`
@@ -72,7 +72,16 @@ export const TextSection = () => {
           the people togethΞr to build an open world.
         </p>
         <p>
-          CHI (Ξ) is deployed on the Ethereum mainnet at 0x02323923232323232323.
+          CHI (Ξ) is deployed on the Ethereum mainnet at{" "}
+          <a
+            css={aCSS}
+            href={`https://etherscan.io/address/${TOKEN_ADDR}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {TOKEN_ADDR}
+          </a>
+          .
         </p>
       </div>
     </div>
