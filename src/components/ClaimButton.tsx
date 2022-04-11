@@ -25,10 +25,12 @@ export const ClaimButton = ({
         min-width: 210px;
         min-height: 36px;
         color: #ffffff;
-        font-family: FTG;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
         font-size: 16px;
         line-height: 36px;
-        font-weight: ${disabled ? "normal" : "bold"};
+
         ${mq[1]} {
           min-width: 180px;
           min-height: 30px;
@@ -46,7 +48,7 @@ export const ClaimButton = ({
       btnStyleCss={css`
         /* background: rgba(229, 125, 68, 0.2); */
         border-radius: 8px;
-        border: ${disabled ? "2px solid #494949" : "solid 1.5px transparent"};
+        border: ${disabled ? "2px solid #494949" : "solid 1px transparent"};
         background-image: ${disabled
             ? "linear-gradient(#262626, #262626)"
             : "linear-gradient(#2e190e, #2e190e)"},

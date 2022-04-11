@@ -140,6 +140,7 @@ export const BtnsImageSection = () => {
             styleCss={css`
               z-index: 1;
               font-family: Poppins;
+              font-weight: 400;
             `}
           >
             {loadingApi && "Loading..."}
@@ -153,6 +154,7 @@ export const BtnsImageSection = () => {
             styleCss={css`
               z-index: 1;
               font-family: Poppins;
+              font-weight: 400;
             `}
             btnStyleCss={css`
               /* padding-top: 2px; */
@@ -179,6 +181,7 @@ export const BtnsImageSection = () => {
             styleCss={css`
               z-index: 1;
               font-family: Poppins;
+              font-weight: 400;
             `}
             btnStyleCss={css`
               /* padding-top: 2px; */
