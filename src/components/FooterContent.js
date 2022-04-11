@@ -17,23 +17,23 @@ const box = require("../../public/box.png?inline");
 const imgs = [
   {
     src: twitter,
-    alt: "twitter",
+    alt: "Twitter",
     href: "https://twitter.com/DragonMetaverse",
   },
   {
     src: discord,
-    alt: "discord",
+    alt: "Discord",
     href: "https://dsc.gg/dragonmetaverse",
   },
   {
     src: github,
-    alt: "github",
+    alt: "Github",
     href: "https://github.com/metaverselabs/Dragon",
   },
   {
     src: medium,
-    alt: "medium",
-    href: "https://blog.dragon.xyz/",
+    alt: "Mirror",
+    href: "https://mirror.xyz/dragonmetaverse.eth",
   },
 ];
 
