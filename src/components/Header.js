@@ -30,25 +30,29 @@ export const Header = () => {
         position: relative;
       `}
     >
-      <span
-        css={css`
-          font-family: Poppins;
-          font-weight: 400;
-          font-size: 28px;
-          line-height: 28px;
-          color: #ffffff;
-          ${mq[1]} {
-            line-height: 24px;
-            font-size: 24px;
-          }
-          ${mq[0]} {
-            line-height: 20px;
-            font-size: 20px;
-          }
-        `}
-      >
-        Dragon
-      </span>
+      <Link href="/">
+        <a>
+          <span
+            css={css`
+              font-family: Poppins;
+              font-weight: 400;
+              font-size: 28px;
+              line-height: 28px;
+              color: #ffffff;
+              ${mq[1]} {
+                line-height: 24px;
+                font-size: 24px;
+              }
+              ${mq[0]} {
+                line-height: 20px;
+                font-size: 20px;
+              }
+            `}
+          >
+            Dragon
+          </span>
+        </a>
+      </Link>
       <ul
         css={css`
           width: 203px;
