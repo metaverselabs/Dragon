@@ -77,12 +77,24 @@ export const BtnsImageSection = () => {
   return (
     <>
       <Confetti start={Boolean(startConfetti)} />
+      <VerticalGap val={60} />
       <div
         css={css`
-          flex: 1;
+          /* flex: 1; */
           /* background-color: wheat; */
+          height: 200px;
+
+          ${mq[2]} {
+            height: 160px;
+          }
+          ${mq[1]} {
+            height: 140px;
+          }
+          ${mq[0]} {
+            height: 120px;
+          }
+
           width: 40%;
-          padding-top: 1.6%;
           display: flex;
           flex-direction: column;
           align-items: center;

@@ -16,12 +16,14 @@ export const Header = () => {
       css={css`
         font-family: Goldman;
         width: 100%;
-        height: auto;
+        height: 90px;
         background-color: black;
+        /* background-color: brown; */
+        /* border-bottom: 1px solid #505050; */
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 1.3%;
+        /* padding-top: 1.3%; */
         @media (max-width: 1100px) {
           margin-bottom: 24px;
         }

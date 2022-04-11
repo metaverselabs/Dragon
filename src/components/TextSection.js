@@ -4,6 +4,7 @@ import { mq } from "../styles/globals";
 import { VerticalGap } from "./VerticalGap";
 import { BottomImage } from "./BottomImage";
 import textImg from "../../public/text.png";
+import { BreakLine } from "./BreakLine";
 
 const Colorspan = ({ children }) => (
   <span
@@ -31,54 +32,7 @@ export const TextSection = () => {
         z-index: 1;
       `}
     >
-      <h1
-        css={css`
-          font-family: Poppins;
-          font-size: 56px;
-          line-height: 56px;
-          color: #ffffff;
-          font-weight: 500;
-          letter-spacing: 0.04em;
-          ${mq[1]} {
-            font-size: 40px;
-          }
-          ${mq[0]} {
-            font-size: 35px;
-          }
-        `}
-      >
-        D<Colorspan>R</Colorspan>A<Colorspan>G</Colorspan>O
-        <Colorspan>N</Colorspan>
-      </h1>
-      {/* <BottomImage
-        src={textImg}
-        alt={"dragon"}
-        width={`${resH(234)}px`}
-        height={`${resH(71)}px`}
-      /> */}
-      <VerticalGap val={resH(12)} />
-      <span
-        css={css`
-          font-size: 16px;
-          line-height: 20px;
-          color: #8b8b8b;
-          /* font-weight: bold; */
-          font-family: Poppins-Bold;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 20px;
-          line-height: 20px;
-          ${mq[1]} {
-            font-size: 17px;
-          }
-          ${mq[0]} {
-            font-size: 14px;
-          }
-        `}
-      >
-        A Metaverse Token
-      </span>
-      <VerticalGap val={resH(25)} />
+      <VerticalGap val={resH(44)} />
       <div
         css={css`
           font-family: KH;
@@ -155,3 +109,52 @@ export const TextSection = () => {
     </div>
   );
 };
+
+// {/* <h1
+//   css={css`
+//     font-family: Poppins;
+//     font-size: 56px;
+//     line-height: 56px;
+//     color: #ffffff;
+//     font-weight: 500;
+//     letter-spacing: 0.04em;
+//     ${mq[1]} {
+//       font-size: 40px;
+//     }
+//     ${mq[0]} {
+//       font-size: 35px;
+//     }
+//   `}
+// >
+//   D<Colorspan>R</Colorspan>A<Colorspan>G</Colorspan>O
+//   <Colorspan>N</Colorspan>
+// </h1>
+// {/* <BottomImage
+//   src={textImg}
+//   alt={"dragon"}
+//   width={`${resH(234)}px`}
+//   height={`${resH(71)}px`}
+// /> */}
+// <VerticalGap val={resH(12)} />
+// <span
+//   css={css`
+//     font-size: 16px;
+//     line-height: 20px;
+//     color: #8b8b8b;
+//     /* font-weight: bold; */
+//     font-family: Poppins-Bold;
+//     font-style: normal;
+//     font-weight: normal;
+//     font-size: 20px;
+//     line-height: 20px;
+//     ${mq[1]} {
+//       font-size: 17px;
+//     }
+//     ${mq[0]} {
+//       font-size: 14px;
+//     }
+//   `}
+// >
+//   A Metaverse Token
+// </span>{" "}
+// */}

@@ -10,6 +10,9 @@ import { VerticalGap } from "../components/VerticalGap";
 import { InfoDisplay } from "../components/staking/InfoDisplay";
 import { StakePanel } from "../components/staking/StakePanel";
 import { ClaimPanel } from "../components/staking/ClaimPanel";
+import { FooterWrapper } from "../components/FooterWrapper";
+import { BreakLine } from "../components/BreakLine";
+import { useWindowSize } from "../utils/useWindowSize";
 
 const OuterDivCss = css`
   background-color: black;
@@ -69,10 +72,18 @@ const Fonter = css`
 
 export default function Home() {
   const { resH, resW } = useResponsiveSize();
+  const { winWidth } = useWindowSize();
   return (
     <div css={OuterDivCss}>
       <div css={DivCss}>
         <Header />
+        <BreakLine
+          cssStyle={css`
+            width: ${winWidth - 15}px;
+            height: 1px;
+            background-color: #505050;
+          `}
+        />
         {/* <LeftNav /> */}
         <VerticalGap val={resH(95)} />
         <VerticalGap val={resH(136)} />
@@ -99,15 +110,14 @@ export default function Home() {
           <ClaimPanel />
         </div>
       </div>
-      <footer css={FonterOuterCss}>
-        <div css={Fonter}>
-          <FooterContent
-            cssstyle={css`
-              margin: auto;
-            `}
-          />
-        </div>
-      </footer>
+      <BreakLine
+        cssStyle={css`
+          width: ${winWidth - 15}px;
+          height: 1px;
+          background-color: #505050;
+        `}
+      />
+      <FooterWrapper />
     </div>
   );
 }

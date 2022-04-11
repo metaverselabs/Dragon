@@ -42,9 +42,13 @@ const Right = ({ cssstyle }) => {
     <div
       css={css`
         display: flex;
-        margin-left: auto;
+        width: 515px;
+        justify-content: space-around; /* margin-left: auto; */
         /* margin-right: 10%; */
         ${cssstyle}
+        ${mq[1]} {
+          width: 70%;
+        }
       `}
     >
       {imgs.map((obj) => {
@@ -52,13 +56,24 @@ const Right = ({ cssstyle }) => {
           <a
             css={css`
               margin-left: 24px;
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              /* line-height: 28px; */
+              /* identical to box height, or 175% */
+
+              text-align: justify;
+
+              color: #8b8b8b;
             `}
             key={obj.alt}
             href={obj.href}
             target="_blank"
             rel="noreferrer"
           >
-            <BottomImage
+            <span>{obj.alt}</span>
+            {/* <BottomImage
               styleCss={css`
                 ${mq[1]} {
                   width: 15px;
@@ -83,7 +98,7 @@ const Right = ({ cssstyle }) => {
               height={"25px"}
               src={obj.src}
               alt={obj.alt}
-            />
+            /> */}
           </a>
         );
       })}
@@ -212,7 +227,7 @@ export const FooterContent = ({ cssstyle }) => {
   return (
     <div
       css={css`
-        height: 35px;
+        /* height: 35px; */
         flex: 1;
         display: flex;
         align-items: center;
