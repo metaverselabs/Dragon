@@ -5,7 +5,7 @@ import { useResponsiveSize } from "../utils/useResponsiveSize";
 import { Header } from "../components/Header";
 import { mq } from "../styles/globals";
 import { DragonImage } from "../components/DragonImage";
-import { TextSection } from "../components/TextSection";
+import { TextSection } from "../components/TextSection2";
 import { BtnsImageSection } from "../components/BtnsImageSection/index";
 import Link from "next/link";
 const arrow = require("../../public/stakearrow.png?webp");

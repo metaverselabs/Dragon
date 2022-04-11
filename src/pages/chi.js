@@ -16,8 +16,8 @@ import { useWindowSize } from "../utils/useWindowSize";
 
 const OuterDivCss = css`
   background-color: black;
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  /* min-height: 100vh; */
 
   display: flex;
   align-items: center;
@@ -28,7 +28,8 @@ const OuterDivCss = css`
 const DivCss = css`
   flex: 1;
   width: 72.5%;
-  min-height: 95%;
+  /* min-height: 95%; */
+  /* background-color: aliceblue; */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -85,8 +86,8 @@ export default function Home() {
           `}
         />
         {/* <LeftNav /> */}
-        <VerticalGap val={resH(95)} />
-        <VerticalGap val={resH(136)} />
+        <VerticalGap val={190} />
+
         <InfoDisplay />
         <VerticalGap val={resH(30)} />
         <div
@@ -110,6 +111,7 @@ export default function Home() {
           <ClaimPanel />
         </div>
       </div>
+      <VerticalGap val={186} />
       <BreakLine
         cssStyle={css`
           width: ${winWidth - 15}px;
