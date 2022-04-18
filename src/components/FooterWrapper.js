@@ -6,26 +6,12 @@ import { VerticalGap } from "./VerticalGap";
 export const FooterWrapper = () => {
   return (
     <footer css={FonterOuterCss}>
-      <VerticalGap val={47} />
+      <VerticalGap val={63} />
       <div css={Fonter}>
         <FooterContent />
       </div>
-      <VerticalGap val={44} />
-      <span
-        css={css`
-          font-family: "Poppins";
-          font-style: normal;
-          font-weight: 400;
-          font-size: 16px;
-          color: #8b8b8b;
-          /* line-height: 28px; */
-          /* identical to box height, or 175% */
 
-          text-align: center;
-        `}
-      >
-        {"Follow us! More will come soon!"}
-      </span>
+
     </footer>
   );
 };

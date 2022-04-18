@@ -58,21 +58,13 @@ export const TextSection = () => {
         `}
       >
         <p>
-          Dragon or Dragon Metaverse, is a collective space initially built on
-          our first cultural community, Dragon City (Genesis), Decentraland.
-          Dragon is expected to be a fantasy world native to the Metaverse,
-          consisting of cities built on different Metaverse platforms and
-          governed through Dragon DAO, a decentralized autonomous organization.
+        Dragon or Dragon Metaverse, is a collective space initially built on our first cultural community, Dragon City (Genesis), Decentraland. Dragon is expected to be a fantasy world native to the Metaverse, consisting of cities built on different Metaverse platforms and governed through Dragon DAO, a decentralized autonomous organization.
         </p>
         <p>
-          With the launch of CHI, a governance token of Dragon DAO, we are going
-          to unleash the ultimate potential of the Metaverse. CHI, with no
-          economic value, performs as a fluid medium in Dragon, irrigates the
-          community, fertilizes the talents, encourages creativity, and links
-          the people togethΞr to build an open world.
+        With the launch of CHI, a governance token of Dragon DAO, we are going to unleash the ultimate potential of the Metaverse. CHI, with no economic value, performs as a fluid medium in Dragon space, irrigates the community, fertilizes the talents, encourages creativity, and links the people togethΞr to build an open world.
         </p>
         <p>
-          CHI (Ξ) is deployed on the Ethereum mainnet at{" "}
+        CHI (Ξ) is deployed on the Ethereum mainnet at{" "}
           <a
             css={aCSS}
             href={`https://etherscan.io/address/${TOKEN_ADDR}`}

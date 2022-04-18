@@ -55,7 +55,7 @@ export const Header = () => {
       </Link>
       <ul
         css={css`
-          width: 203px;
+          width: 348px;
           height: 24px;
           left: 0;
           right: 0;
@@ -78,15 +78,15 @@ export const Header = () => {
           @media (max-width: 1100px) {
             position: absolute;
 
-            width: 190px;
+            width: 348px;
           }
           ${mq[1]} {
             font-size: 13px;
-            width: 150px;
+            width: 290px;
           }
           ${mq[0]} {
             font-size: 10px;
-            width: 130px;
+            width: 180px;
           }
         `}
       >

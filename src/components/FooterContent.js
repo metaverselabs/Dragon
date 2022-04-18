@@ -18,17 +18,17 @@ const imgs = [
   {
     src: twitter,
     alt: "Twitter",
-    href: "https://twitter.com/DragonMetaverse",
+    href: "https://twitter.com/dragondao_",
   },
   {
     src: discord,
     alt: "Discord",
-    href: "https://dsc.gg/dragonmetaverse",
+    href: "https://dsc.gg/DragonMetaverse",
   },
   {
     src: github,
     alt: "Github",
-    href: "https://github.com/metaverselabs/Dragon",
+    href: "https://github.com/CHItoken",
   },
   {
     src: medium,
