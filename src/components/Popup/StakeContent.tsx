@@ -183,7 +183,7 @@ export const StakeContent = () => {
               }
             `}
           >
-            DRAGON/ETH
+            CHI/ETH
           </span>
           <HorizontalGap val={resW(12)} />
           <Button

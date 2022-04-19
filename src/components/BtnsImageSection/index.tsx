@@ -163,7 +163,7 @@ export const BtnsImageSection = () => {
             {!isMining && !isQualifed && "You’re not qualified"}
             {/* {!isMining && isConnected && isQualifed && isClaimed && "Claimed"} */}
             {!isMining && isClaimed && "Claimed"}
-            {!isMining && isQualifed && !isClaimed && "Claim $DRAGON"}
+            {!isMining && isQualifed && !isClaimed && "Claim $CHI"}
             {isMining && "Claiming..."}
           </ClaimButton>
         )}

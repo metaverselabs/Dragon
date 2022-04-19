@@ -32,7 +32,7 @@ export const LpInfo = () => {
       `}
     >
       <HorizontalGap val={resW(80)} />
-      <DataSection title={displayBalance} hint={"Available DRAGON/ETH"} />
+      <DataSection title={displayBalance} hint={"Available CHI/ETH"} />
       <div
         css={css`
           position: absolute;
@@ -45,7 +45,7 @@ export const LpInfo = () => {
       />
       <DataSection
         title={displayStakedBalance}
-        hint={"Staked DRAGON/ETH"}
+        hint={"Staked CHI/ETH"}
         css={css`
           margin-left: auto;
           width: auto;

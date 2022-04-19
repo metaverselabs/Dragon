@@ -71,7 +71,7 @@ export const ClaimPanel = () => {
         />
         <DataSection
           title={displayEarned}
-          hint={"DRAGON Reward"}
+          hint={"CHI Reward"}
           css={css`
             ${mq[1]} {
               align-items: center;
