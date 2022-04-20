@@ -8,30 +8,45 @@ import { formatEther, parseUnits } from "@ethersproject/units";
 import { useRewardRate } from "./hooks/useRewardRate";
 import Big from "big.js";
 import { useMemo } from "react";
+import { useTotalSupply } from "./hooks/useTotalSupply";
 
 // reference
 //const aprToApy = (apr, frequency = BLOCKS_IN_A_YEAR) => ((1 + apr / 100 / frequency) ** frequency - 1) * 100
 //const apy = aprToApy((((volume / 7) * 365 * 0.0025) / liquidity) * 100, 3650)
 export const InfoDisplay = () => {
+  // how many lp2 coin in Lp_reward contract
   const lpStakedTotal = useTokenBalance(LPV2_ADDR, LP_REWARD_ADDR);
-  const coinStakedTotal = useTokenBalance(TOKEN_ADDR, LPV2_ADDR);
+  // how many chi in l2pool
+  const coinInV2LpTotal = useTokenBalance(TOKEN_ADDR, LPV2_ADDR);
+  const lpv2TotalSupply = useTotalSupply(LPV2_ADDR);
+
   const rewardRate = useRewardRate();
   const { account } = useEthers();
 
   const rewardRateString = rewardRate?.toString();
   // const lpStakedTotalString = lpStakedTotal?.toString();
-  const coinStakedTotalString = coinStakedTotal?.toString();
+  const coinInV2LpTotalString = coinInV2LpTotal?.toString();
 
   const rewardRateBig = useMemo(() => {
     if (rewardRateString) return new Big(rewardRateString);
   }, [rewardRateString]);
-  const coinStakedTotalBig = useMemo(() => {
-    if (coinStakedTotalString) return new Big(coinStakedTotalString);
-  }, [coinStakedTotalString]);
-  const apr = rewardRateBig?.div(coinStakedTotalBig)?.mul(36500)?.toFixed(2);
+  const coinInV2LpTotalBig = useMemo(() => {
+    if (coinInV2LpTotalString) return new Big(coinInV2LpTotalString);
+  }, [coinInV2LpTotalString]);
+  const stakedChiBigRaw = coinInV2LpTotalBig
+    ?.div(lpv2TotalSupply)
+    ?.mul(lpStakedTotal);
+  const stakedChiBig = stakedChiBigRaw?.eq(0)
+    ? coinInV2LpTotalBig
+    : stakedChiBigRaw;
+  const apr = rewardRateBig
+    ?.div(stakedChiBig)
+    ?.mul(36500 * 60 * 60 * 24)
+    ?.toFixed(2);
   // console.log("res", apr);
 
-  // console.log("CoinStakedTotal", coinStakedTotal?.toString());
+  console.log("lpv2TotalSupply", lpv2TotalSupply);
+  console.log("CoinStakedTotal", coinInV2LpTotal?.toString());
 
   const displayLpStakedTotal = account
     ? Number(formatEther(lpStakedTotal?.toString() || 0)).toFixed(2)
