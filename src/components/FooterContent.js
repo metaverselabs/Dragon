@@ -25,11 +25,11 @@ const imgs = [
     alt: "Discord",
     href: "https://dsc.gg/DragonMetaverse",
   },
-  {
-    src: github,
-    alt: "Github",
-    href: "https://github.com/CHItoken",
-  },
+  // {
+  //   src: github,
+  //   alt: "Github",
+  //   href: "https://github.com/CHItoken",
+  // },
   {
     src: medium,
     alt: "Mirror",
