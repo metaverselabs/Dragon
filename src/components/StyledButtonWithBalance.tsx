@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useMemo } from "react";
 import { Button } from "./Button";
 import { css } from "@emotion/react";
 import { useResponsiveSize } from "../utils/useResponsiveSize";
@@ -12,6 +12,7 @@ import { TOKEN_ADDR } from "../../constants";
 import { BottomImage } from "./BottomImage";
 import { useApiCheck } from "./BtnsImageSection/api";
 import { useEthers } from "@usedapp/core";
+import { useIsClaimed } from "./BtnsImageSection/useIsClaimed";
 
 const OnClickAddToken = async () => {
   const tokenAddress = TOKEN_ADDR;
@@ -56,8 +57,23 @@ export const StyledButtonWithBalance = ({
   balance,
 }: IB & { balance: BigNumber }) => {
   const { resH, resW } = useResponsiveSize();
-  // const { account } = useEthers();
-  // const { merkleData } = useApiCheck({ account });
+  const { account, library } = useEthers();
+  const { merkleData, isRealQualifed } = useApiCheck({ account });
+  const signer = library?.getSigner();
+  console.log("merkleData", merkleData);
+
+  const { isClaimed } = useIsClaimed({
+    account,
+    provider: signer,
+    isRealQualifed,
+    merkleData,
+  });
+
+  const showClaimable = isRealQualifed && !isClaimed;
+  const claimableAmount = useMemo(() => {
+    return parseInt(merkleData?.amount || "0");
+  }, [merkleData?.amount]);
+  // console.log("amount", claimableAmount);
   return (
     <div
       css={css`
@@ -102,7 +118,9 @@ export const StyledButtonWithBalance = ({
         `}
       >
         <span>
-          {Number(formatEther(balance ?? 0)).toLocaleString() ?? 0} CHI
+          {showClaimable && `${claimableAmount} Claimable`}
+          {!showClaimable &&
+            `${Number(formatEther(balance ?? 0)).toLocaleString() ?? 0} CHI`}
         </span>
         <button
           css={css`
