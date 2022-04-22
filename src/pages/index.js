@@ -48,6 +48,9 @@ export default function Home() {
   return (
     <div css={OuterDivCss}>
       <div css={DivCss}>
+        <Head>
+          <title>Dragon Metaverse | DragonDAO (CHI)</title>
+        </Head>
         <Header />
         <BreakLine
           cssStyle={css`

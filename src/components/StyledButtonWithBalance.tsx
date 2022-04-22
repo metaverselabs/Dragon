@@ -10,6 +10,8 @@ import { WalletPopupTrigger } from "./Popup";
 import { IB } from "./IB";
 import { TOKEN_ADDR } from "../../constants";
 import { BottomImage } from "./BottomImage";
+import { useApiCheck } from "./BtnsImageSection/api";
+import { useEthers } from "@usedapp/core";
 
 const OnClickAddToken = async () => {
   const tokenAddress = TOKEN_ADDR;
@@ -54,6 +56,8 @@ export const StyledButtonWithBalance = ({
   balance,
 }: IB & { balance: BigNumber }) => {
   const { resH, resW } = useResponsiveSize();
+  // const { account } = useEthers();
+  // const { merkleData } = useApiCheck({ account });
   return (
     <div
       css={css`
