@@ -123,7 +123,7 @@ export const BtnsImageSection = () => {
             }}
             disabled={false}
             styleCss={css`
-              z-index: 1;
+              z-index: 0;
               font-family: Poppins;
             `}
             btnStyleCss={css`
@@ -138,7 +138,7 @@ export const BtnsImageSection = () => {
             onClick={apiErrTxt ? resendApi : () => {}}
             disabled={apiErrTxt ? false : true}
             styleCss={css`
-              z-index: 1;
+              z-index: 0;
               font-family: Poppins;
               font-weight: 400;
             `}
@@ -152,7 +152,7 @@ export const BtnsImageSection = () => {
             onClick={OnClickClaim}
             disabled={disabled}
             styleCss={css`
-              z-index: 1;
+              z-index: 0;
               font-family: Poppins;
               font-weight: 400;
             `}
@@ -179,7 +179,7 @@ export const BtnsImageSection = () => {
             }}
             disabled={false}
             styleCss={css`
-              z-index: 1;
+              z-index: 0;
               font-family: Poppins;
               font-weight: 400;
             `}
