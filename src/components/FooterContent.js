@@ -35,6 +35,10 @@ const imgs = [
     alt: "Mirror",
     href: "https://mirror.xyz/dragonmetaverse.eth",
   },
+  {
+    alt: "Forum",
+    href: "https://forum.dragon.xyz/",
+  },
 ];
 
 const Right = ({ cssstyle }) => {
