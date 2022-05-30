@@ -84,9 +84,14 @@ export const Header = () => {
             font-size: 13px;
             width: 290px;
           }
+          @media (max-width: 675px) {
+            position: absolute;
+
+            width: 230px;
+          }
           ${mq[0]} {
             font-size: 10px;
-            width: 180px;
+            width: 170px;
           }
         `}
       >
@@ -112,6 +117,15 @@ export const Header = () => {
           {
             href: "https://docs.dragon.xyz/",
             txt: "Docs",
+            Tag: ({ children, ...props }) => (
+              <a target="_blank" rel="noreferrer" {...props}>
+                {children}
+              </a>
+            ),
+          },
+          {
+            href: "https://vote.dragon.xyz/",
+            txt: "Vote",
             Tag: ({ children, ...props }) => (
               <a target="_blank" rel="noreferrer" {...props}>
                 {children}
