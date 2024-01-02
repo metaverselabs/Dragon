@@ -8,12 +8,6 @@ export const config = isDev
         jsonRpcUri: `${process.env.NEXT_PUBLIC_JSON_RPC_URL}`,
         wsRpcUri: `${process.env.NEXT_PUBLIC_WS_RPC_URL}`,
       },
-      // [ChainId.Mainnet]: {
-      //   jsonRpcUri:
-      //     "https://eth-mainnet.alchemyapi.io/v2/xQgsSdf3_x4Jd7490_yXjw6Z1I_VjwTu",
-      //   wsRpcUri:
-      //     "wss://eth-mainnet.alchemyapi.io/v2/xQgsSdf3_x4Jd7490_yXjw6Z1I_VjwTu",
-      // },
     }
   : {
       [ChainId.Mainnet]: {
